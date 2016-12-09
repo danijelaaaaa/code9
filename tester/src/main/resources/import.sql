@@ -1,0 +1,1 @@
+insert into category(NAME) values ('Java');
