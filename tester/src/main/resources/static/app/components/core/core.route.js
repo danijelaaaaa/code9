@@ -6,7 +6,7 @@
 
 	config.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function config($stateProvider, $urlRouterProvider) {
-		$urlRouterProvider.otherwise('/category');
+		$urlRouterProvider.otherwise('/categories');
 
 		$stateProvider
 		.state('main', {
@@ -14,12 +14,6 @@
 			views: {
 				'header': {
 					templateUrl: 'app/components/core/header.html'	
-				},
-				'menu': {
-					templateUrl: 'app/components/core/menu.html'	
-				},
-				'footer': {
-					templateUrl: 'app/components/core/footer.html'	
 				}
 			}
 		})

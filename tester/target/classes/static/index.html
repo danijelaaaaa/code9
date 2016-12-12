@@ -9,7 +9,7 @@
  <!-- Bootstrap -->
  
  <link href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">  
- <link href="app/css/main.css" rel="stylesheet">
+ <link href="app/css/screen.css" rel="stylesheet">
  
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
  <script src="/webjars/jquery/2.1.4/jquery.min.js"></script>
@@ -35,9 +35,9 @@
      <script type="text/javascript" src="app/components/category/category.service.js"></script>
      
      
-<!--         <script type="text/javascript" src="app/components/core/core.module.js"></script>
-        <script type="text/javascript" src="app/components/core/core.route.js"></script>
-        <script type="text/javascript" src="app/components/core/core.controller.js"></script>
+<!-- <script type="text/javascript" src="app/components/core/core.module.js"></script>
+     <script type="text/javascript" src="app/components/core/core.route.js"></script>
+     <script type="text/javascript" src="app/components/core/core.controller.js"></script>
      <script type="text/javascript" src="app/components/core/Services/category.service.js"></script>
      <script type="text/javascript" src="app/components/core/Services/question.service.js"></script>
      <script type="text/javascript" src="app/components/core/Services/test.service.js"></script>
@@ -46,9 +46,6 @@
     
 </head>
 <body ng-app="tester" >
-
- 
-
  
 <!--  <div ng-show="!authenticated" class="navbar navbar-inverse navbar-fixed-top">
    <div class="container">
@@ -74,12 +71,14 @@
    -->
 
     
-  <div class="container">
+  
   <div ui-view="header"></div>
-  <div ui-view="menu"></div>
-  <div ui-view="content"></div>
-  <div ui-view="footer"></div>
-  </div>
+  <section id="mainContent">
+ 	 <div ui-view="content"></div>
+  </section>
+  <footer>
+  <div class="darkNoise">Levi9 IT Services</div>
+  </footer>
   
 
   
