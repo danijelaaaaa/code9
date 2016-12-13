@@ -1,4 +1,4 @@
 (function() {
 	angular
-		.module('tester', ['tester.core', 'tester.category']);
+		.module('tester', ['tester.core', 'tester.category', 'tester.question']);
 })();									  
