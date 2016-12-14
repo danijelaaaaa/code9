@@ -73,6 +73,7 @@
  			promise_edit.then(function (data) {
 	 			
 	 			console.log("Dobavljeno pitanje  za edit");
+	 			console.log(data);
 	 			$scope.question = data;
 	 			
 	 			promise_categories = CategoryService.getCategories();
@@ -88,36 +89,42 @@
 		
 		$scope.editQuestion = function(){
 			console.log("category")
-			console.log($scope.question.category.name);
-		}
-		
-		/*
-		$scope.editCategory = function(){
- 			
- 			promise_add = CategoryService.editCategory($scope.category);
+			
+			angular.forEach($scope.categories, function(value, key) {
+				if(value.name == $scope.question.category.name){
+					$scope.question.category.id = value.id;
+				}
+			});
+			
+
+ 			promise_add = QuestionService.addQuestion($scope.question);
  			promise_add.then(function (data) {
 	 			
-	 			console.log("Izmjenjena kategorija");
-	 			$state.go("main.categories");
+	 			console.log("Izmjenjeno je pitanje");
+	 			$state.go("main.questions");
 
 	 		});
- 		};
- 		
- 		$scope.removeCategory = function(categoryId){
- 			
- 			promise_add = CategoryService.removeCategory(categoryId);
+					
+		};
+		
+		$scope.removeQuestion = function(questionId){
+			
+			promise_add = QuestionService.removeQuestion(questionId);
  			promise_add.then(function (data) {
 	 			
-	 			console.log("Izbrisana kategorija");
-	 			promise_categories = CategoryService.getCategories();
-	 	 		promise_categories.then(function (data){
-	 	 			$scope.categories = data ;
+	 			console.log("Izbrisano pitanje");
+	 			promise_questions = QuestionService.getQuestions();
+	 	 		promise_questions.then(function (data){
+	 	 			$scope.questions = data ;
 	 	 		
 	 	 		});
 
 	 		});
- 		};
- 		*/
+			
+		};
+		
+
+	
  		
 
  	}

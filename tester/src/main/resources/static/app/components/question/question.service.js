@@ -62,6 +62,25 @@
 				
 				return deferred.promise;
 				
+			},
+			
+			removeQuestion: function(questionId){
+				var deferred = $q.defer();
+				
+				$http({
+					url: "http://localhost:8080/questions/id/"+questionId, 
+					method: "DELETE",
+					headers: {
+	                    'Content-Type': 'application/json'
+	         		}
+				}).success(function (data) {
+					deferred.resolve(data);
+				}).error(function () {
+					alert("Došlo je do greške pri dodavanju kategorije");
+				});
+				
+				return deferred.promise;
+				
 			}
 			
 		

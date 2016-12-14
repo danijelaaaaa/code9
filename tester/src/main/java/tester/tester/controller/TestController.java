@@ -1,6 +1,7 @@
 package tester.tester.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,44 +14,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import tester.tester.model.Category;
 import tester.tester.model.Question;
-import tester.tester.service.QuestionService;
+import tester.tester.model.Test;
+import tester.tester.service.TestService;
 
 @RestController
-@RequestMapping(value = "/questions")
-public class QuestionController {
+@RequestMapping(value = "/tests")
+public class TestController {
 	
 	@Autowired
-	QuestionService questionService;
+	TestService testService;
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Question>> getQuestions(){
-		List<Question> listOfQuestion = new ArrayList<Question>();
-		listOfQuestion = questionService.findAll();
+	public ResponseEntity<List<Test>> getTests(){
+		List<Test> listOfTests = new ArrayList<Test>();
+		listOfTests = testService.findAll();
 		
-		return new ResponseEntity<List<Question>>(listOfQuestion, HttpStatus.OK);
+		return new ResponseEntity<List<Test>>(listOfTests, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Question> addQuestion(@RequestBody Question q){
-		Question question = questionService.addQuestion(q);
+	public ResponseEntity<Test> addTest(@RequestBody Test t){
+		t.setCreateDate(new Date());
+		t.setCreatedBy("Danijela");
 		
-		return new ResponseEntity<Question>(question, HttpStatus.CREATED);
+		Test test = testService.addTest(t);
+		
+		return new ResponseEntity<Test>(test, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value="/id/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Question> getQuestion(@PathVariable Long id){
-		Question question = questionService.findOne(id);
-		return new ResponseEntity<Question>(question, HttpStatus.OK);
-		
-	}
 	
 	@RequestMapping(value="/id/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> removeQuestion(@PathVariable Long id){
-		questionService.removeQuestion(id);
+	public ResponseEntity<String> removeTest(@PathVariable Long id){
+		testService.removeTest(id);
 		return new ResponseEntity<String>(HttpStatus.OK);
 		
 	}
+	
 
 }

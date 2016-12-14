@@ -10,17 +10,13 @@
 		<br />
 		<label>Category</label>
 		
-		<select id="categorySelect" name="categorySelect" ng-model="question.category.name">
-			<option ng-repeat = "category in categories" ng-value="{{category.id}}" >
-				{{category.name}}
-			</option>
-		</select>
 		
-		<select id="categorySelect" name="categorySelect" ng-model="question.category.name" class="form-control" >
-    		<option  ng-repeat="cat in categories" ng-value="{{cat.id}}">{{cat.name}}</option>
+		<select id="categorySelect" name="categorySelect" ng-model="question.category.name" >
+    		<option  ng-repeat="cat in categories" ng-value="{{cat.name}}">{{cat.name}}</option>
    		</select>
 		
-		
+		<br/>
+		<div ng-if = "question.answers.length > 0" >
 		<label>Answers</label>
 
 		<ol>
@@ -32,7 +28,7 @@
 
 			</div>
 		</ol>
-
+		</div>
 		<br />
 
 		
