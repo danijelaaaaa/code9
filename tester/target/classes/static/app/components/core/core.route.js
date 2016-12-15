@@ -17,6 +17,26 @@
 				}
 			}
 		})
+		.state('main.login', {
+			url: '/login',
+			views: {
+				'content@': {
+					templateUrl: 'app/components/core/login.html',
+					controller: 'UserController',
+					controllerAs: 'userc'
+				}
+			}
+		})
+		.state('main.registration', {
+			url: '/login',
+			views: {
+				'content@': {
+					templateUrl: 'app/components/core/registration.html',
+					controller: 'UserController',
+					controllerAs: 'userc'
+				}
+			}
+		})
 		.state('main.about', {
 			url: '/about',
 			views: {

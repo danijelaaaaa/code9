@@ -4,8 +4,14 @@
  		.module('tester.category')
  		.controller('CategoryController', CategoryController);
 
- 	CategoryController.$inject = ['CategoryService', '$scope', '$state', '$stateParams', '$location'];
- 	function CategoryController(CategoryService, $scope, $state, $stateParams, $location) {
+ 	CategoryController.$inject = ['CategoryService', '$scope', '$state', '$stateParams', '$location', 'auth'];
+ 	function CategoryController(CategoryService, $scope, $state, $stateParams, $location, auth) {
+ 		
+ 		
+ 		if(!auth.isLoggedIn()){
+ 			$state.go("main.login");
+ 		}
+ 		
  		var catc = this;
  		var promise_categories = {};
  		var promise_add ={};
