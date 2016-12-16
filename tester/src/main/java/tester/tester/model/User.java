@@ -1,5 +1,7 @@
 package tester.tester.model;
 
+import java.security.SecureRandom;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +33,29 @@ public class User {
 	@Column(name = "email", nullable = false, unique = false)
 	private String email;
 	
+	@Column(name = "role", nullable = false, unique = false)
+	private String role;
 	
+	
+	private String token;
+	
+	
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public Long getId() {
 		return id;
@@ -86,8 +110,15 @@ public class User {
 	public User() {
 	}
 	
-	
-	
+	public String generateToken() {
+
+		SecureRandom random = new SecureRandom();
+		byte bytes[] = new byte[20];
+		random.nextBytes(bytes);
+		String token = bytes.toString();
+		
+		return token;
+	}
 	
 
 }

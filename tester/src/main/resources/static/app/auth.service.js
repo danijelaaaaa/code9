@@ -10,6 +10,16 @@
     	
       return session.getUser() !== null;
     };
+    
+    
+    this.isAdmin = function isAdmin(){
+    	
+    	if(session.getUser()!= null){
+    		return session.getUser().role == 'ADMIN'; 
+    	}else{
+    		return false;
+    	}
+    }
 
     /**
     * Log in
@@ -21,11 +31,18 @@
       return $http
         .post('/users/login', credentials)
         .then(function(response){
+        	
           var data = response.data;
-          session.setUser(data.user);
-          session.setAccessToken("trala");
-          $state.go('main.categories');
-          
+
+          		
+	          session.setUser(data);
+	          session.setAccessToken(data.token);
+	          
+	          $state.go('main.tests');
+	          
+	          
+	          
+          //}
         });
     };
 
@@ -38,9 +55,14 @@
       return $http
         .get('/users/logout')
         .then(function(response){
-
+        	console.log("Loging out");
           // Destroy session in the browser
-          session.destroy();      
+        	
+        	session.destroy();
+        	
+        
+             
+         
         });
 
     };
@@ -56,7 +78,7 @@
             
             session.setUser(data.user);
             session.setAccessToken("trala");
-            
+      
             
           });
       };

@@ -6,14 +6,16 @@
 
 	config.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function config($stateProvider, $urlRouterProvider) {
-		$urlRouterProvider.otherwise('/categories');
+		$urlRouterProvider.otherwise('/tests');
 
 		$stateProvider
 		.state('main', {
 			abstract: true,
 			views: {
 				'header': {
-					templateUrl: 'app/components/core/header.html'	
+					templateUrl: 'app/components/core/header.html',
+					controller: 'UserController',
+					controllerAs: 'userc'
 				}
 			}
 		})

@@ -30,7 +30,7 @@
 						<td class="highlightcolorBlack">
 							<a ng-click="beforeEditQuestion(question.id)" class="button">Edit Test</a>
 						</td> -->
-						<td class="highlightcolorBlack">
+						<td class="highlightcolorBlack" ng-show = "auth.isAdmin()">
 							<a ng-click="removeTest(test.id)" class="button">Remove Test</a>
 						</td>
 		</tr>
@@ -42,11 +42,11 @@
 </div>
 
 
-<div class="highlightcolorBlack">
+<div class="highlightcolorBlack" ng-show = "auth.isAdmin()">
 	<a ng-click="popUpPdf()"class="button">Pdf</a>
 </div>
 
 
-<div class="highlightcolorBlack">
+<div class="highlightcolorBlack" ng-show = "auth.isAdmin()">
 	<a ui-sref='main.addTest' class="button">Add new test</a>
 </div>

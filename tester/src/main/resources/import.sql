@@ -26,3 +26,6 @@ insert into testquestions(TEST_ID, QUESTION_ID) values ('1', '1');
 insert into testquestions(TEST_ID, QUESTION_ID) values ('1', '2');
 insert into testquestions(TEST_ID, QUESTION_ID) values ('2', '3');
 insert into testquestions(TEST_ID, QUESTION_ID) values ('2', '4');
+
+insert into user(NAME, LASTNAME, USERNAME, PASSWORD, EMAIL, ROLE) values ('Danijela', 'Petrovic', 'danijela', 'danijela', 'danijelaaaaa@gmail.com', 'ADMIN');
+insert into user(NAME, LASTNAME, USERNAME, PASSWORD, EMAIL, ROLE) values ('Neko', 'Neko', 'neko', 'neko', 'neko@gmail.com', 'USER');

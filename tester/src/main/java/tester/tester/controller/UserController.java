@@ -1,6 +1,10 @@
 package tester.tester.controller;
 
 
+import java.io.Console;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +23,19 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	HttpSession httpSession;
+	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public ResponseEntity<User> login(@RequestBody User u){
+		
+		//System.out.println(u.getUsername()+u.getPassword());
 		User user = new User();
 		user = userService.login(u.getUsername(), u.getPassword());
+		
+		user.setToken(user.generateToken());
+	
+		httpSession.setAttribute("user", user);
 		
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}

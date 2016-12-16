@@ -5,8 +5,8 @@
  		.factory('QuestionService', QuestionService);
 
 
- 	QuestionService.$inject = ['$http', '$q'];
- 	function QuestionService($http, $q){
+ 	QuestionService.$inject = ['$http', '$q', 'session'];
+ 	function QuestionService($http, $q, session){
  		var questionService = {
 
  			getQuestions: function(){
@@ -14,7 +14,10 @@
 
 				$http({
 					url: "http://localhost:8080/questions", 
-					method: "GET"
+					method: "GET",
+					headers: {
+	                    'Authorization': session.getAccessToken()
+	         		}
 				}).success(function (data) {
 					
 					deferred.resolve(data);

@@ -1,22 +1,28 @@
 (function (angular) {
 
-  function sessionService($log, localStorage){
+  function sessionService($log, localStorage, $window){
 
     // Instantiate data when service
     // is loaded
 	  
-	  
-
-	  
-	    this._user = Json.parse(localStorage.getItem('session.user'));
+		 
+	    this._user = localStorage.getItem('session.user');
 	    this._accessToken = localStorage.getItem('session.accessToken');
 	    
-	    console.log(this._user);
+	   
 	
 	
     this.getUser = function(){
       return this._user;
     };
+    
+    this.getFullName = function(){
+    	if(this._user != null){
+    		return this._user.name+" "+this._user.lastname;
+    	}
+    	
+    	return "";
+      };
 
     this.setUser = function(user){
       this._user = user;
@@ -40,12 +46,13 @@
     this.destroy = function destroy(){
       this.setUser(null);
       this.setAccessToken(null);
+      
     };
 
   }
 
   // Inject dependencies
-  sessionService.$inject = ['$log', 'localStorage'];
+  sessionService.$inject = ['$log', 'localStorage', '$window'];
 
   // Export
   angular

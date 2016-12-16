@@ -8,9 +8,9 @@
  	function CategoryController(CategoryService, $scope, $state, $stateParams, $location, auth) {
  		
  		
- 		if(!auth.isLoggedIn()){
+ 		/*if(!auth.isLoggedIn()){
  			$state.go("main.login");
- 		}
+ 		}*/
  		
  		var catc = this;
  		var promise_categories = {};
@@ -80,6 +80,13 @@
 
 	 		});
  		};
+ 		
+ 		
+ 		$scope.logout = function(){
+ 			auth.logOut();
+ 			$state.go("main.login");
+ 			
+ 		}
  		
  		
  	

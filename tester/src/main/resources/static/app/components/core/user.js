@@ -9,11 +9,9 @@
  		
  		$scope.logIn = function(user){
  			auth.logIn(user);
- 			if(!auth.isLoggedIn()){
- 	 			alert("Your username or password is invalid, try again :)");
- 	 		}else{
- 	 			$state.go('main.categories');
- 	 		}
+ 			
+ 			$state.go('main.categories');
+ 			
  		};
  		
  		$scope.goToRegistration = function(user){
@@ -25,6 +23,13 @@
  			
  			$state.go("main.categories");
  		}
+ 		
+ 		
+ 		$scope.logOut = function(){
+ 			auth.logOut();
+ 			$state.go("main.login");
+ 		}
+ 			
  			
  		
  		
